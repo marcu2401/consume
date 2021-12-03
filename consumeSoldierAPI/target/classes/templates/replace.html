@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://wwww.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Soldier</title>
+    <title>Replace soldier</title>
 </head>
 <body>
     <header>
@@ -14,7 +14,7 @@
     <main>
         <ul>
             <li th:text="${soldier.id}">0</li>
-            <li th:text="${soldier.rank}">private</li>
+            <li th:text="">private</li>
             <li th:text="${soldier.birth}">2001-12-12</li>
             <li th:text="${soldier.weapon}">hands</li>
             <li th:text="${soldier.shotpeople}">0</li>
@@ -22,12 +22,17 @@
         <form method="post" action="/soldiers">
             <label>shotted enemies</label>
             <input type="hidden" name="id" th:value="${soldier.id}">
+            <label>Rank:</label>
+            <input type="text" name="rank" th:value="${soldier.rank}"><br>
+            <label>Birth:</label>
+            <input type="date" name="birth" th:value="${soldier.birth}"><br>
+            <label>Weapon:</label>
+            <input type="text" name="weapon" th:value="${soldier.weapon}"><br>
+            <label>Shot people:</label>
             <input type="number" name="shotpeople" th:value="${soldier.shotpeople}" th:min="${soldier.shotpeople}">
-            <input type="hidden" name="_method" value="patch">
+            <input type="hidden" name="_method" value="put">
             <input type="submit" value="edit">
         </form>
-        <hr>
-        <a th:href="'/soldiers/replace/'+${soldier.id}">replace soldier</a>
     </main>
 </body>
 </html>
